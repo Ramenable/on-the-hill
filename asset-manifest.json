@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/on-the-hill/static/css/main.5f361e03.chunk.css",
+    "main.js": "/on-the-hill/static/js/main.ba3259f0.chunk.js",
+    "main.js.map": "/on-the-hill/static/js/main.ba3259f0.chunk.js.map",
+    "runtime-main.js": "/on-the-hill/static/js/runtime-main.cdf4273f.js",
+    "runtime-main.js.map": "/on-the-hill/static/js/runtime-main.cdf4273f.js.map",
+    "static/js/2.e9120c8b.chunk.js": "/on-the-hill/static/js/2.e9120c8b.chunk.js",
+    "static/js/2.e9120c8b.chunk.js.map": "/on-the-hill/static/js/2.e9120c8b.chunk.js.map",
+    "index.html": "/on-the-hill/index.html",
+    "precache-manifest.5aa5a7124dfdea7b20ffdaa305f6bd02.js": "/on-the-hill/precache-manifest.5aa5a7124dfdea7b20ffdaa305f6bd02.js",
+    "service-worker.js": "/on-the-hill/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/on-the-hill/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.e9120c8b.chunk.js.LICENSE.txt": "/on-the-hill/static/js/2.e9120c8b.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/on-the-hill/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cdf4273f.js",
+    "static/js/2.e9120c8b.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.ba3259f0.chunk.js"
+  ]
+}
