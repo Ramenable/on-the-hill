@@ -83,26 +83,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const StyledTextField = styled(TextField)`
-  label.focused {
-    color: #ffffff;
-  }
-  .MuiOutlinedInput-root {
-    fieldset {
-      border-color: #83A3BC;
-    }
-    &:hover fieldset {
-      border-color: #294662;
-    }
-    &.Mui-focused fieldset {
-      border-color: #294662;
-    }
-  }
-  textInputStyle: {
-    color: 'white',
-  }
-`;
-
 document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
 
 
@@ -118,7 +98,7 @@ function App() {
       <div className={classes.root}>
         <Container maxWidth="sm">
           <div style={{ padding: 20 }}>
-            <Grid container spacing={5}>
+            {/* <Grid container spacing={5}>
               <div style={{ marginLeft: "40%", marginTop: "50%" }}>
                 <Grid item xs={12}>
                   <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
@@ -130,7 +110,7 @@ function App() {
                   <Button variant="outlined" borderColor="white" onClick={() => history.push('/home')}>Join Room</Button>
                 </Grid>
               </div>
-            </Grid>
+            </Grid> */}
             <ul>
               <li>
                 <Link to="/">Signin</Link>
@@ -140,11 +120,19 @@ function App() {
               </li>
             </ul>
           </div>
+
+          <Switch>
+            <Route exact path="/">
+              <Signin />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+          </Switch>
         </Container>
       </div >
-      <Route path='/' exact component={Signin}></Route>
+      <Route path='/signin' component={Signin}></Route>
       <Route path='/home' component={Home}></Route>
-      <button onClick={() => history.push('/signin')}>go to sign in</button>
 
     </Router>
   );
