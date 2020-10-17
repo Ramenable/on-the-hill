@@ -1,12 +1,16 @@
 {
-  "name": "on-the-hill",
+  "name": "grocery-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Ramenable.github.io/on-the-hill",
+  "homepage": "http://Ramenable.github.io/grocery-app",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "nodemon": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
