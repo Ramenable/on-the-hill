@@ -126,7 +126,7 @@ function App() {
                   <Button variant="outlined" borderColor="white">Create Room</Button>
                 </Grid>
                 <Grid item xs={12}>
-                  <Button variant="outlined" borderColor="white">Join Room</Button>
+                  <Button variant="outlined" borderColor="white" onClick={() => history.push('/home')}>Join Room</Button>
                 </Grid>
               </div>
             </Grid>
@@ -135,6 +135,8 @@ function App() {
       </div >
       <Route path = '/' exact component = {Signin}></Route>
       <Route path = '/home' component = {Home}></Route>
+      <button onClick={() => history.push('/signin')}>go to sign in</button>
+
     </Router>
   );
 }
