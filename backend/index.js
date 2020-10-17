@@ -9,9 +9,12 @@ const cors = require("cors");
 app.use(cors());
 
 require("dotenv/config");
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true});
+mongoose.connect(process.env.DB_CONNECTION, { useUnifiedTopology: true, useNewUrlParser: true});
 
 const user = require("./routes/userRoute");
 app.use("/users", user);
 
-app.listen(3000);
+//localhost:5000/
+ const server = app.listen(5000, function(){
+     console.log("Server running on port 5000");
+ });

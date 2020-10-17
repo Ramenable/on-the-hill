@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+import axios from "axios";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -20,6 +22,43 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
+
+dab("s", "g");
+function dab (userName, roomName){
+  console.log("fg");
+  axios.post('http://localhost:5000/users/addUser', {
+    username: userName,
+    roomCode: roomName
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+// function dab (userName, roomName){
+//   console.log("gg");
+//     fetch('http://localhost:5000/userRoute/addUser', {
+//     method: 'post',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       "username": userName,
+//       "roomname": roomName,
+//     })
+//   });
+// }
+// function dab (userName, roomName){
+//   console.log("gg");
+//     fetch('http://localhost:5000/addUser', {
+//     method: 'post',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       "username": userName,
+//       "roomname": roomName,
+//     })
+//   });
+// }
 
 function App() {
   const classes = useStyles();

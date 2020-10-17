@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/addUser", (req, res) => {
+	console.log(req.body.username);
 	const user = new User({
 		username: req.body.username,
 		roomCode: req.body.roomCode,
