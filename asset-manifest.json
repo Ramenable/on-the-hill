@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/on-the-hill/static/css/main.5f361e03.chunk.css",
-    "main.js": "/on-the-hill/static/js/main.172a31e3.chunk.js",
-    "main.js.map": "/on-the-hill/static/js/main.172a31e3.chunk.js.map",
-    "runtime-main.js": "/on-the-hill/static/js/runtime-main.cdf4273f.js",
-    "runtime-main.js.map": "/on-the-hill/static/js/runtime-main.cdf4273f.js.map",
-    "static/js/2.e9120c8b.chunk.js": "/on-the-hill/static/js/2.e9120c8b.chunk.js",
-    "static/js/2.e9120c8b.chunk.js.map": "/on-the-hill/static/js/2.e9120c8b.chunk.js.map",
-    "index.html": "/on-the-hill/index.html",
-    "precache-manifest.d2593afe9518f02a658e5e76342c3a21.js": "/on-the-hill/precache-manifest.d2593afe9518f02a658e5e76342c3a21.js",
-    "service-worker.js": "/on-the-hill/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/on-the-hill/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.e9120c8b.chunk.js.LICENSE.txt": "/on-the-hill/static/js/2.e9120c8b.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/on-the-hill/static/media/logo.5d5d9eef.svg"
+    "main.css": "/grocery-app/static/css/main.5f361e03.chunk.css",
+    "main.js": "/grocery-app/static/js/main.c44a63cd.chunk.js",
+    "main.js.map": "/grocery-app/static/js/main.c44a63cd.chunk.js.map",
+    "runtime-main.js": "/grocery-app/static/js/runtime-main.6a050502.js",
+    "runtime-main.js.map": "/grocery-app/static/js/runtime-main.6a050502.js.map",
+    "static/js/2.e9120c8b.chunk.js": "/grocery-app/static/js/2.e9120c8b.chunk.js",
+    "static/js/2.e9120c8b.chunk.js.map": "/grocery-app/static/js/2.e9120c8b.chunk.js.map",
+    "index.html": "/grocery-app/index.html",
+    "precache-manifest.a0d14d62fd91ed119c6f6b9bb4a67218.js": "/grocery-app/precache-manifest.a0d14d62fd91ed119c6f6b9bb4a67218.js",
+    "service-worker.js": "/grocery-app/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/grocery-app/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.e9120c8b.chunk.js.LICENSE.txt": "/grocery-app/static/js/2.e9120c8b.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/grocery-app/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cdf4273f.js",
+    "static/js/runtime-main.6a050502.js",
     "static/js/2.e9120c8b.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.172a31e3.chunk.js"
+    "static/js/main.c44a63cd.chunk.js"
   ]
 }
