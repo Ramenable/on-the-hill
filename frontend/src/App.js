@@ -54,9 +54,6 @@ function dab(userName, roomName) {
 
 
 const useStyles = makeStyles((theme) => ({
-  // bg: {
-  //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
-  // },
   root: {
     flexGrow: 1,
     background: 'linear-gradient(45deg, #AEE387 30%, #83D6E2 90%)',
@@ -75,46 +72,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const StyledTextField = styled(TextField)`
-  label.focused {
-    color: white;
-  }
-  .MuiOutlinedInput-root {
-    fieldset {
-      border-color: #83A3BC;
-    }
-    &:hover fieldset {
-      border-color: #294662;
-    }
-    &.Mui-focused fieldset {
-      border-color: #294662;
-    }
-  }
-  textInputStyle: {
-    color: 'white',
-  }
-`;
-
 document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
 
 function App() {
   const classes = useStyles();
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       AMENO
-    //     </p>
-    //   </header>
-    // </div>
     <div className={classes.root}>
       <Container maxWidth="sm">
         <div style={{ padding: 20 }}>
           <Grid container spacing={5}>
             <div style={{ marginLeft: "40%", marginTop: "50%" }}>
               <Grid item xs={12}>
-                <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
+                <TextField id="outlined-basic" label="Name" variant="outlined" />
               </Grid>
               <Grid item xs={12}>
                 <Button variant="outlined" borderColor="white">Create Room</Button>
@@ -127,16 +96,6 @@ function App() {
         </div>
       </Container>
     </div >
-    //   {/* <Container maxWidth="sm" style={{ marginLeft: "40%", marginTop: "20%" }}> */}
-    //     {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
-    //     {/* <form className={classes.root} noValidate autoComplete="off"> */}
-    //       {/* <TextField id="outlined-basic" label="Name" variant="outlined" /> */}
-    //       {/* <TextField id="outlined-basic" label="Room Code" variant="outlined" /> */}
-    //     {/* </form> */}
-    //   {/* </Container> */}
-    // <form className={classes.root} noValidate autoComplete="off">
-    //     <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-    // </form>
   );
 }
 
