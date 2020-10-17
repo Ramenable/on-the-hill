@@ -14,10 +14,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { TextareaAutosize } from '@material-ui/core';
 
 // import { createBrowserHistory } from "history";
-import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, createBrowserHistory, History } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History } from "react-router-dom";
 import Signin from "./Pages/Signin";
 import Home from "./Pages/Home";
-// import history from './history';
+import { createBrowserHistory } from "history";
 
 
 
@@ -107,6 +107,8 @@ document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
 
 
 //----- some routing functions
+
+export const history = createBrowserHistory();
   
 function App() {
   const classes = useStyles();
