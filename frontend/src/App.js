@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { TextareaAutosize } from '@material-ui/core';
 
 // import { createBrowserHistory } from "history";
-import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History, Link } from "react-router-dom";
 import Signin from "./Pages/Signin";
 import Home from "./Pages/Home";
 import { createBrowserHistory } from "history";
@@ -109,11 +109,12 @@ document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
 //----- some routing functions
 
 export const history = createBrowserHistory();
-  
+
 function App() {
   const classes = useStyles();
   return (
-    <Router history = {history}>
+
+    <Router history={history}>
       <div className={classes.root}>
         <Container maxWidth="sm">
           <div style={{ padding: 20 }}>
@@ -130,11 +131,19 @@ function App() {
                 </Grid>
               </div>
             </Grid>
+            <ul>
+              <li>
+                <Link to="/">Signin</Link>
+              </li>
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+            </ul>
           </div>
         </Container>
       </div >
-      <Route path = '/' exact component = {Signin}></Route>
-      <Route path = '/home' component = {Home}></Route>
+      <Route path='/' exact component={Signin}></Route>
+      <Route path='/home' component={Home}></Route>
       <button onClick={() => history.push('/signin')}>go to sign in</button>
 
     </Router>
