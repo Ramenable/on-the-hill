@@ -9,33 +9,25 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import styled from 'styled-components';
+import { withStyles } from '@material-ui/core/styles';
+import { TextareaAutosize } from '@material-ui/core';
 
 import axios from "axios";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
-
 dab("s", "g");
-function dab (userName, roomName){
+function dab(userName, roomName) {
   console.log("fg");
   axios.post('http://localhost:5000/users/addUser', {
     username: userName,
     roomCode: roomName
   })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 // function dab (userName, roomName){
 //   console.log("gg");
@@ -60,6 +52,51 @@ function dab (userName, roomName){
 //   });
 // }
 
+
+const useStyles = makeStyles((theme) => ({
+  // bg: {
+  //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+  // },
+  root: {
+    flexGrow: 1,
+    background: 'linear-gradient(45deg, #AEE387 30%, #83D6E2 90%)',
+    // background: 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(150, 150, 150, .3)',
+    color: 'white',
+    height: '100%',
+    padding: '0 30px',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: '#213651',
+  }
+}));
+
+const StyledTextField = styled(TextField)`
+  label.focused {
+    color: white;
+  }
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: #83A3BC;
+    }
+    &:hover fieldset {
+      border-color: #294662;
+    }
+    &.Mui-focused fieldset {
+      border-color: #294662;
+    }
+  }
+  textInputStyle: {
+    color: 'white',
+  }
+`;
+
+document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
+
 function App() {
   const classes = useStyles();
   return (
@@ -71,22 +108,25 @@ function App() {
     //     </p>
     //   </header>
     // </div>
-
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField id="outlined-basic" label="Room Code" variant="outlined" />
-        </Grid>
-        <Grid item xs={12}>
-          <Button variant="contained" color="primary">
-            Enter
-          </Button>
-        </Grid>
-      </Grid>
-    </div>
+      <Container maxWidth="sm">
+        <div style={{ padding: 20 }}>
+          <Grid container spacing={5}>
+            <div style={{ marginLeft: "40%", marginTop: "50%" }}>
+              <Grid item xs={12}>
+                <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="outlined" borderColor="white">Create Room</Button>
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="outlined" borderColor="white">Join Room</Button>
+              </Grid>
+            </div>
+          </Grid>
+        </div>
+      </Container>
+    </div >
     //   {/* <Container maxWidth="sm" style={{ marginLeft: "40%", marginTop: "20%" }}> */}
     //     {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
     //     {/* <form className={classes.root} noValidate autoComplete="off"> */}
@@ -94,8 +134,6 @@ function App() {
     //       {/* <TextField id="outlined-basic" label="Room Code" variant="outlined" /> */}
     //     {/* </form> */}
     //   {/* </Container> */}
-
-
     // <form className={classes.root} noValidate autoComplete="off">
     //     <TextField id="outlined-basic" label="Outlined" variant="outlined" />
     // </form>
