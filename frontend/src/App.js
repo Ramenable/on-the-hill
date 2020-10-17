@@ -13,6 +13,14 @@ import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import { TextareaAutosize } from '@material-ui/core';
 
+// import { createBrowserHistory } from "history";
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, createBrowserHistory, History } from "react-router-dom";
+import Signin from "./Pages/Signin";
+import Home from "./Pages/Home";
+import history from './history';
+
+
+
 import axios from "axios";
 
 dab("s", "g");
@@ -54,6 +62,9 @@ function dab(userName, roomName) {
 
 
 const useStyles = makeStyles((theme) => ({
+  // bg: {
+  //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+  // },
   root: {
     flexGrow: 1,
     background: 'linear-gradient(45deg, #AEE387 30%, #83D6E2 90%)',
@@ -72,30 +83,57 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const StyledTextField = styled(TextField)`
+  label.focused {
+    color: #ffffff;
+  }
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: #83A3BC;
+    }
+    &:hover fieldset {
+      border-color: #294662;
+    }
+    &.Mui-focused fieldset {
+      border-color: #294662;
+    }
+  }
+  textInputStyle: {
+    color: 'white',
+  }
+`;
+
 document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
 
+
+//----- some routing functions
+  
 function App() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Container maxWidth="sm">
-        <div style={{ padding: 20 }}>
-          <Grid container spacing={5}>
-            <div style={{ marginLeft: "40%", marginTop: "50%" }}>
-              <Grid item xs={12}>
-                <TextField id="outlined-basic" label="Name" variant="outlined" />
-              </Grid>
-              <Grid item xs={12}>
-                <Button variant="outlined" borderColor="white">Create Room</Button>
-              </Grid>
-              <Grid item xs={12}>
-                <Button variant="outlined" borderColor="white">Join Room</Button>
-              </Grid>
-            </div>
-          </Grid>
-        </div>
-      </Container>
-    </div >
+    <Router history = {history}>
+      <div className={classes.root}>
+        <Container maxWidth="sm">
+          <div style={{ padding: 20 }}>
+            <Grid container spacing={5}>
+              <div style={{ marginLeft: "40%", marginTop: "50%" }}>
+                <Grid item xs={12}>
+                  <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="outlined" borderColor="white">Create Room</Button>
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="outlined" borderColor="white">Join Room</Button>
+                </Grid>
+              </div>
+            </Grid>
+          </div>
+        </Container>
+      </div >
+      <Route path = '/' exact component = {Signin}></Route>
+      <Route path = '/home' component = {Home}></Route>
+    </Router>
   );
 }
 
