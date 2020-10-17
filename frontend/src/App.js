@@ -131,8 +131,8 @@ function App() {
           </Switch>
         </Container>
       </div >
-      <Route path='/signin' component={Signin}></Route>
-      <Route path='/home' component={Home}></Route>
+      {/* <Route path='/' component={Signin}></Route>
+      <Route path='/home' component={Home}></Route> */}
 
     </Router>
   );
