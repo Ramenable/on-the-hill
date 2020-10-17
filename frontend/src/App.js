@@ -23,9 +23,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-dab("s", "g");
-function dab (userName, roomName){
-  console.log("fg");
+createUserRoom("me", "my room");
+function createUserRoom (userName, roomName){
+  axios.post('http://localhost:5000/users/addUser', {
+    username: userName,
+    roomCode: roomName
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+function updateUserRoom (userName, roomName){
   axios.post('http://localhost:5000/users/addUser', {
     username: userName,
     roomCode: roomName
