@@ -9,7 +9,6 @@ router.get("/getRoom", (req, res) => {
 });
 
 router.post("/addRoom", (req, res) => {
-    console.log('hi');
     const room = new Room({
         roomCode: req.body.roomCode,
         members: req.body.members,
