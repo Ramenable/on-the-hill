@@ -79,11 +79,11 @@ const useStyles = makeStyles((theme) => ({
   // },
   root: {
     flexGrow: 1,
-    background: 'linear-gradient(45deg, #AEE387 30%, #83D6E2 90%)',
+    // background: 'linear-gradient(45deg, #AEE387 30%, #83D6E2 90%)',
     // background: 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)',
     border: 0,
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(150, 150, 150, .3)',
+    // boxShadow: '0 3px 5px 2px rgba(150, 150, 150, .3)',
     color: 'white',
     height: '100%',
     padding: '0 30px',

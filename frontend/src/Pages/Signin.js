@@ -1,4 +1,5 @@
 import React from 'react';
+import './Signin.css';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -34,25 +35,27 @@ const StyledTextField = styled(TextField)`
     color: 'white',
   }
 `;
+// .grid-container{
+//   display: grid;
+//   grid-row-gap: 50 px;
+// }
 
 function Signin() {
-    return (
-        <div>
-            <Grid container spacing={5}>
-                <div style={{ marginLeft: "40%", marginTop: "50%" }}>
-                    <p>hiii sign in pls</p>
-                    <Grid item xs={12}>
-                        <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button variant="outlined" borderColor="white">Create Room</Button>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button variant="outlined" borderColor="white">Join Room</Button>
-                    </Grid>
-                </div>
-            </Grid>
-        </div>
-    )
+  return (
+    <Grid container spacing={3}>
+      <div style={{ marginLeft: "30%", marginTop: "30%" }}>
+        <Grid item xs={12} style={{padding: "5%"}} >
+          <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
+        </Grid>
+        <div padding='20'></div>
+        <Grid item xs={12} style={{padding: "5%", align: "center"}} >
+          <Button variant="outlined" borderColor="white">Create Room</Button>
+        </Grid>
+        <Grid item xs={12} style={{padding: "5%"}} >
+          <Button variant="outlined" borderColor="white">Join Room</Button>
+        </Grid>
+      </div>
+    </Grid>
+  )
 }
 export default Signin;
