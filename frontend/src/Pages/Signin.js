@@ -28,7 +28,18 @@ function createUserRoom(){
   .catch(function (error) {
     console.log(error);
   });
-
+  var array = ["room", document.getElementById('userNameVal').value]
+  axios.post('http://localhost:5000/rooms/addRoom', {
+    roomCode: document.getElementById('roomCodeVal').value,
+    members: array,
+    numMembers: 1,
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 }
 
