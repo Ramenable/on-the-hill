@@ -1,16 +1,16 @@
 const express = require("express");
-const User = require("../users");
+const Grocery = require("../groceries");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-	User.find()
+	Grocery.find()
 	  .then((data) => res.status(200).json(data))
 	  .catch((err) => res.status(500).json(err));
 });
 
-router.post("/makeUser", (req, res) => {
+router.post("/addGrocery", (req, res) => {
 	console.log(req.body.username);
-	const user = new User({
+	const grocery = new Grocery({
 		username: req.body.username,
 		roomCode: req.body.roomCode,
 	});
@@ -23,14 +23,6 @@ router.post("/makeUser", (req, res) => {
 		.catch((err) => {
 			res.status(500).json(err);
 		})
-});
-
-router.delete("/:userId", (req, res) => {
-	User.remove({ _id: req.params.userId })
-		.then((data) => res.status(200).json(data))
-		.catch((err) => {
-			res.status(500).json(err);
-		});
 });
 
 module.exports = router;

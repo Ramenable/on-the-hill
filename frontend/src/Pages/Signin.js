@@ -16,6 +16,47 @@ import { TextareaAutosize } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History, Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
+import axios from "axios";
+
+function createUserRoom(){
+  axios.post('http://localhost:5000/users/makeUser', {
+    username: document.getElementById('userNameVal').value,
+    roomCode: document.getElementById('roomCodeVal').value
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  var array = ["room", document.getElementById('userNameVal').value]
+  axios.post('http://localhost:5000/rooms/addRoom', {
+    roomCode: document.getElementById('roomCodeVal').value,
+    members: array,
+    numMembers: 1,
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+function updateUserRoom(){
+  axios.post('http://localhost:5000/users/makeUser', {
+    username: document.getElementById('userNameVal').value,
+    roomCode: document.getElementById('roomCodeVal').value
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 const StyledTextField = styled(TextField)`
   label.focused {
     color: #ffffff;
@@ -41,6 +82,7 @@ const StyledTextField = styled(TextField)`
 // }
 
 function Signin() {
+<<<<<<< HEAD
   return (
     <Grid container spacing={3}>
       <div style={{ marginLeft: "30%", marginTop: "30%" }}>
@@ -57,5 +99,28 @@ function Signin() {
       </div>
     </Grid>
   )
+=======
+    return (
+        <div>
+            <Grid container spacing={5}>
+                <div style={{ marginLeft: "40%", marginTop: "50%" }}>
+                    <p>hiii sign in pls</p>
+                    <Grid item xs={12}>
+                        <StyledTextField id="userNameVal" label="Name" variant="outlined" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <StyledTextField id="roomCodeVal" label="RoomCode" variant="outlined" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button variant="outlined" borderColor="white" onClick={createUserRoom} >Create Room</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button variant="outlined" borderColor="white" onClick={updateUserRoom}>Join Room</Button>
+                    </Grid>
+                </div>
+            </Grid>
+        </div>
+    )
+>>>>>>> a6a1e4a92944fafd8827de4dd28b7c92ef253883
 }
 export default Signin;

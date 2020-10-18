@@ -1,5 +1,5 @@
 const express = require("express");
-const room = require("../rooms");
+const Room = require("../rooms");
 const router = express.Router();
 
 router.get("/getRoom", (req, res) => {
@@ -9,7 +9,7 @@ router.get("/getRoom", (req, res) => {
 });
 
 router.post("/addRoom", (req, res) => {
-    const room = new room({
+    const room = new Room({
         roomCode: req.body.roomCode,
         members: req.body.members,
         numMembers: req.body.numMembers,
