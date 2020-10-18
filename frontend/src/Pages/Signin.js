@@ -84,15 +84,17 @@ const StyledTextField = styled(TextField)`
 function Signin() {
   return (
     <Grid container spacing={3}>
-      <div style={{ marginLeft: "30%", marginTop: "30%" }}>
+      <div style={{ marginLeft: "28%", marginTop: "20%", marginBottom: "100%", marginRight: "28%" }}>
         <Grid item xs={12} style={{padding: "5%"}} >
           <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
         </Grid>
-        <div padding='20'></div>
-        <Grid item xs={12} style={{padding: "5%", align: "center"}} >
+        <Grid item xs={12} style={{padding: "5%"}} >
+          <StyledTextField id="outlined-basic" label="Room Code" variant="outlined" />
+        </Grid>
+        <Grid item xs={12} style={{padding: "5%", marginLeft: "14%"}} >
           <Button variant="outlined" borderColor="white">Create Room</Button>
         </Grid>
-        <Grid item xs={12} style={{padding: "5%"}} >
+        <Grid item xs={12} style={{padding: "5%", marginLeft: "19%"}} >
           <Button variant="outlined" borderColor="white">Join Room</Button>
         </Grid>
       </div>

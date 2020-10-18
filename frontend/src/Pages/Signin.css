@@ -3,4 +3,9 @@ body {
     height: 100%;
     margin: 0 auto;
     background-image: linear-gradient(45deg, #AEE387 30%, #83D6E2 90%);
+    /* background-image: linear-gradient(180deg, #213651 30%, #3A5D78 90%); */
+}
+
+.center {
+    margin: auto;
 }
