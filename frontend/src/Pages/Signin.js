@@ -82,7 +82,6 @@ const StyledTextField = styled(TextField)`
 // }
 
 function Signin() {
-<<<<<<< HEAD
   return (
     <Grid container spacing={3}>
       <div style={{ marginLeft: "30%", marginTop: "30%" }}>
@@ -99,28 +98,5 @@ function Signin() {
       </div>
     </Grid>
   )
-=======
-    return (
-        <div>
-            <Grid container spacing={5}>
-                <div style={{ marginLeft: "40%", marginTop: "50%" }}>
-                    <p>hiii sign in pls</p>
-                    <Grid item xs={12}>
-                        <StyledTextField id="userNameVal" label="Name" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <StyledTextField id="roomCodeVal" label="RoomCode" variant="outlined" />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button variant="outlined" borderColor="white" onClick={createUserRoom} >Create Room</Button>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button variant="outlined" borderColor="white" onClick={updateUserRoom}>Join Room</Button>
-                    </Grid>
-                </div>
-            </Grid>
-        </div>
-    )
->>>>>>> a6a1e4a92944fafd8827de4dd28b7c92ef253883
 }
 export default Signin;
