@@ -15,6 +15,36 @@ import { TextareaAutosize } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History, Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
+import axios from "axios";
+
+function createUserRoom(){
+  axios.post('http://localhost:5000/users/makeUser', {
+    username: document.getElementById('userNameVal').value,
+    roomCode: document.getElementById('roomCodeVal').value
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+}
+
+function updateUserRoom(){
+  axios.post('http://localhost:5000/users/makeUser', {
+    username: document.getElementById('userNameVal').value,
+    roomCode: document.getElementById('roomCodeVal').value
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 const StyledTextField = styled(TextField)`
   label.focused {
     color: #ffffff;
@@ -42,13 +72,16 @@ function Signin() {
                 <div style={{ marginLeft: "40%", marginTop: "50%" }}>
                     <p>hiii sign in pls</p>
                     <Grid item xs={12}>
-                        <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
+                        <StyledTextField id="userNameVal" label="Name" variant="outlined" />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant="outlined" borderColor="white">Create Room</Button>
+                        <StyledTextField id="roomCodeVal" label="RoomCode" variant="outlined" />
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant="outlined" borderColor="white">Join Room</Button>
+                        <Button variant="outlined" borderColor="white" onClick={createUserRoom} >Create Room</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button variant="outlined" borderColor="white" onClick={updateUserRoom}>Join Room</Button>
                     </Grid>
                 </div>
             </Grid>

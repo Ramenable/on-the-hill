@@ -20,35 +20,6 @@ import Home from "./Pages/Home";
 import { createBrowserHistory } from "history";
 
 
-
-import axios from "axios";
-
-createUserRoom("me", "my room");
-function createUserRoom (userName, roomName){
-  axios.post('http://localhost:5000/users/addUser', {
-    username: userName,
-    roomCode: roomName
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
-
-function updateUserRoom (userName, roomName){
-  axios.post('http://localhost:5000/users/addUser', {
-    username: userName,
-    roomCode: roomName
-  })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
 // function dab (userName, roomName){
 //   console.log("gg");
 //     fetch('http://localhost:5000/userRoute/addUser', {
