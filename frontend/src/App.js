@@ -38,9 +38,6 @@ function createUserRoom (userName, roomName){
 }
 
 function updateUserRoom (userName, roomName){
-dab("s", "g");
-function dab(userName, roomName) {
-  console.log("fg");
   axios.post('http://localhost:5000/users/addUser', {
     username: userName,
     roomCode: roomName
@@ -151,6 +148,5 @@ function App() {
 
     </Router>
   );
-}
 }
 export default App;
