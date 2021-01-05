@@ -15,39 +15,14 @@ import { TextareaAutosize } from '@material-ui/core';
 
 // import { createBrowserHistory } from "history";
 import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History, Link } from "react-router-dom";
+// routing
 import Signin from "./Pages/Signin";
 import Home from "./Pages/Home";
+import RoomLobby from "./Pages/RoomLobby";
 import { createBrowserHistory } from "history";
 
 
-// function dab (userName, roomName){
-//   console.log("gg");
-//     fetch('http://localhost:5000/userRoute/addUser', {
-//     method: 'post',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       "username": userName,
-//       "roomname": roomName,
-//     })
-//   });
-// }
-// function dab (userName, roomName){
-//   console.log("gg");
-//     fetch('http://localhost:5000/addUser', {
-//     method: 'post',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       "username": userName,
-//       "roomname": roomName,
-//     })
-//   });
-// }
-
-
 const useStyles = makeStyles((theme) => ({
-  // bg: {
-  //   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
-  // },
   root: {
     flexGrow: 1,
     // background: 'linear-gradient(45deg, #AEE387 30%, #83D6E2 90%)',
@@ -75,34 +50,20 @@ export const history = createBrowserHistory();
 
 function App() {
   const classes = useStyles();
+
+  const routeChange = () =>{ 
+    let path = '/';  
+    history.push(path);
+  }
+
+  routeChange();
+  
   return (
 
     <Router history={history}>
       <div className={classes.root}>
         <Container maxWidth="sm">
-          <div style={{ padding: 20 }}>
-            {/* <Grid container spacing={5}>
-              <div style={{ marginLeft: "40%", marginTop: "50%" }}>
-                <Grid item xs={12}>
-                  <StyledTextField id="outlined-basic" label="Name" variant="outlined" />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button variant="outlined" borderColor="white">Create Room</Button>
-                </Grid>
-                <Grid item xs={12}>
-                  <Button variant="outlined" borderColor="white" onClick={() => history.push('/home')}>Join Room</Button>
-                </Grid>
-              </div>
-            </Grid> */}
-            <ul>
-              <li>
-                <Link to="/">Signin</Link>
-              </li>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-            </ul>
-          </div>
+          
 
           <Switch>
             <Route exact path="/">
@@ -111,12 +72,12 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
+            <Route path="/roomlobby">
+              <RoomLobby />
+            </Route>
           </Switch>
         </Container>
       </div >
-      {/* <Route path='/' component={Signin}></Route>
-      <Route path='/home' component={Home}></Route> */}
-
     </Router>
   );
 }

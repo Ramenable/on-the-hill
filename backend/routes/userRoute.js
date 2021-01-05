@@ -3,13 +3,17 @@ const User = require("../users");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-	User.find()
-	  .then((data) => res.status(200).json(data))
-	  .catch((err) => res.status(500).json(err));
+	// User.find()
+	//   .then((data) => res.status(200).json(data))
+	//   .catch((err) => res.status(500).json(err));
+	User.find({})
+    	.then(results => {
+      	  console.log(results)
+    	})
+    	.catch(error => console.error(error))
 });
 
 router.post("/makeUser", (req, res) => {
-	console.log(req.body.username);
 	const user = new User({
 		username: req.body.username,
 		roomCode: req.body.roomCode,
