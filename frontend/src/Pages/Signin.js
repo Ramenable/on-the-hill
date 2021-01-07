@@ -23,11 +23,16 @@ import { createBrowserHistory } from "history";
 
 import axios from "axios";
 
-var roomExists = false;
+var roomExists;
+var userValue;
+var num;
 
-function createUserRoom(){
-  var array = ["room", document.getElementById('userNameVal').value]
-  axios.post('http://localhost:5000/rooms/addRoom', {
+async function createUserRoom() {
+  num = document.getElementById('roomCodeVal').value;
+  userValue = document.getElementById('userNameVal').value;
+
+  var array = [ document.getElementById('userNameVal').value]
+  const newRoom = await axios.post('http://localhost:5000/rooms/addRoom', {
     roomCode: document.getElementById('roomCodeVal').value,
     members: array,
     numMembers: 1,
@@ -39,9 +44,14 @@ function createUserRoom(){
   .catch(function (error) {
     console.log(error);
     roomExists = true;
-    return;
   });
-  axios.post('http://localhost:5000/users/makeUser', {
+
+  //no need to make an invalid user
+  if (roomExists === true) {
+    return;
+  }
+
+  const newUser = await axios.post('http://localhost:5000/users/makeUser', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value
   })
@@ -54,8 +64,28 @@ function createUserRoom(){
 
 }
 
-function updateUserRoom(){
-  axios.post('http://localhost:5000/rooms/updateRoom', {
+async function updateUserRoom() {
+  num = document.getElementById('roomCodeVal').value;
+  userValue = document.getElementById('userNameVal').value;
+
+  const newUser = await axios.post('http://localhost:5000/users/makeUser', {
+    username: document.getElementById('userNameVal').value,
+    roomCode: document.getElementById('roomCodeVal').value
+  })
+  .then(function (response) {
+    console.log(response);
+    roomExists = true;
+  })
+  .catch(function (error) {
+    console.log(error);
+    roomExists = false;
+  });
+
+  if (roomExists === false) {
+    return;
+  }
+
+  const updatedRoom = await axios.post('http://localhost:5000/rooms/updateRoom', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value,
   })
@@ -66,18 +96,26 @@ function updateUserRoom(){
   .catch(function (error) {
     console.log(error);
     roomExists = false;
-    return;
   });
-  axios.post('http://localhost:5000/users/makeUser', {
+
+}
+
+async function returnUserRoom() {
+  num = document.getElementById('roomCodeVal').value;
+  userValue = document.getElementById('userNameVal').value;
+
+  const newUser = await axios.post('http://localhost:5000/users/returnUser', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value
   })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  .then(function (response) {
+    console.log(response);
+    roomExists = true;
+  })
+  .catch(function (error) {
+    console.log(error);
+    roomExists = false;
+  });
 }
 
 const StyledTextField = styled(TextField)`
@@ -120,7 +158,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 43,
-    fontFamily: 'Helvetica',
+    fontFamily: 'Raleway',
     color: '#444444'
   },
   titlecontent: {
@@ -136,24 +174,35 @@ function Signin() {
   const classes = useStyles();
 
   //routing to new room
-  const routeChangeCreate = () =>{ 
-    createUserRoom();
-    if (roomExists == true) {
+  const routeChangeCreate = async () =>{ 
+   const data = await createUserRoom();
+    if (roomExists === true) {
       handleClick();
     } else {
-      let path = "/RoomLobby"; 
-      history.push(path);
+      let path = "/RoomLobby" + "/"+ num; 
+      history.push(path, {number: num, user: userValue});
     }
   }
 
   //routing to existing room
-  const routeChangeJoin = () =>{ 
-    updateUserRoom();
-    if (roomExists == false) {
+  const routeChangeJoin = async () =>{ 
+    const data = await updateUserRoom();
+    if (roomExists === false) {
       handleClick1();
     } else {
-      let path = "/RoomLobby"; 
-      history.push(path);
+      let path = "/RoomLobby" + "/"+ num; 
+      history.push(path, {number: num, user: userValue});
+    }
+  }
+
+   //routing to existing room that user is already in
+  const routeChangeReturn = async () =>{ 
+    const data = await returnUserRoom();
+    if (roomExists === false) {
+      handleClick2();
+    } else {
+      let path = "/RoomLobby" + "/"+ num; 
+      history.push(path, {number: num, user: userValue});
     }
   }
   
@@ -187,6 +236,21 @@ function Signin() {
     setOpen1(false);
   };
 
+  //error message if room doesn't exist
+  const [open2, setOpen2] = React.useState(false);
+
+  const handleClick2 = () => {
+    setOpen2(true);
+  };
+
+  const handleClose2 = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen2(false);
+  };
+
   return (
     <React.Fragment>
     <Card className={classes.root} variant="outlined">
@@ -205,10 +269,13 @@ function Signin() {
             <StyledTextField id="roomCodeVal" label="Room Code" variant="outlined" />
           </Grid>
           <Grid item xs={12} style={{padding: "5%", marginLeft: "9%"}} >
-            <Button variant="outlined" borderColor="white" onClick={routeChangeCreate}>Create Room</Button>
+            <Button variant="outlined" bordercolor="white" onClick={routeChangeCreate}>Create Room</Button>
           </Grid>
           <Grid item xs={12} style={{padding: "5%", marginLeft: "15%"}} >
-            <Button variant="outlined" borderColor="white" onClick={routeChangeJoin}>Join Room</Button>
+            <Button variant="outlined" bordercolor="white" onClick={routeChangeJoin}>Join Room</Button>
+          </Grid>
+          <Grid item xs={12} style={{padding: "5%", marginLeft: "5%"}} >
+            <Button variant="outlined" bordercolor="white" onClick={routeChangeReturn}>Re-enter Room</Button>
           </Grid>
         </div>
         </Grid>
@@ -241,10 +308,28 @@ function Signin() {
       open={open1}
       autoHideDuration={6000}
       onClose={handleClose1}
-      message="The room doesn't exist"
+      message="This user already exists or the room doesn't exist"
       action={
         <React.Fragment>
           <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose1}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </React.Fragment>
+      }
+    />
+
+    <Snackbar
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      open={open2}
+      autoHideDuration={6000}
+      onClose={handleClose2}
+      message="User not found"
+      action={
+        <React.Fragment>
+          <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose2}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </React.Fragment>

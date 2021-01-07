@@ -57,24 +57,15 @@ function App() {
   }
 
   routeChange();
-  
+
   return (
 
     <Router history={history}>
       <div className={classes.root}>
         <Container maxWidth="sm">
-          
-
           <Switch>
-            <Route exact path="/">
-              <Signin />
-            </Route>
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route path="/roomlobby">
-              <RoomLobby />
-            </Route>
+            <Route exact path="/" component={Signin} />
+            <Route exact path="/roomlobby/:number" component={RoomLobby} />
           </Switch>
         </Container>
       </div >

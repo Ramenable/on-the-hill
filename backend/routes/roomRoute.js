@@ -1,9 +1,11 @@
 const express = require("express");
+const url = require("url");
 const Room = require("../rooms");
 const router = express.Router();
 
 router.get("/getRoom", (req, res) => {
-    Room.find({ roomCode: '5555' })
+    var url_parts = url.parse(req.url, true);
+    Room.find({ roomCode: url_parts.query.room })
         .then(results => {
           res.status(200).json(results);
         })
@@ -12,10 +14,10 @@ router.get("/getRoom", (req, res) => {
         });
 });
 
-router.post("/addRoom", (req, res) => {
-    roomexists = Room.exists({ roomCode: req.body.roomCode }); 
-    if (roomexists == true) {
-        res.status(500).json({ error: "The room already exists" });
+router.post("/addRoom", async(req, res) => {
+    const exists = await Room.exists({ roomCode: req.body.roomCode });  
+    if (exists === true) {
+        res.status(500).json("The room already exists");
     } else {
         const room = new Room({
             roomCode: req.body.roomCode,
@@ -35,10 +37,10 @@ router.post("/addRoom", (req, res) => {
     
 });
 
-router.post("/updateRoom", (req, res) => {
-    roomexists = Room.exists({ roomCode: req.body.roomCode }); 
-    if (roomexists == false) {
-        res.status(500).json({ error: "The room doesn't exist" });
+router.post("/updateRoom", async (req, res) => {
+    const exists = await Room.exists({ roomCode: req.body.roomCode });
+    if (exists === false) {
+        res.status(500).json("The room doesn't exist");
     } else {
         Room.updateOne(
         { roomCode: req.body.roomCode },
@@ -55,12 +57,6 @@ router.post("/updateRoom", (req, res) => {
         }
       );
     }
-        // .then((data) => {
-        //     res.status(200).json(data);
-        // })
-        // .catch((err) => {
-        //     res.status(500).json(err);
-        // });
 });
 
 module.exports = router;

@@ -13,20 +13,34 @@ router.get("/", (req, res) => {
     	.catch(error => console.error(error))
 });
 
-router.post("/makeUser", (req, res) => {
-	const user = new User({
-		username: req.body.username,
-		roomCode: req.body.roomCode,
-	});
+router.post("/makeUser", async (req, res) => {
+	const exists = await User.exists({ username: req.body.username, roomCode: req.body.roomCode, });  
+    if (exists === false) { 
+		const user = new User({
+			username: req.body.username,
+			roomCode: req.body.roomCode,
+		});
 
-	user
-		.save()
-		.then((data) => {
-			res.status(200).json(data);
-		})
-		.catch((err) => {
-			res.status(500).json(err);
-		})
+		user
+			.save()
+			.then((data) => {
+				res.status(200).json(data);
+			})
+			.catch((err) => {
+				res.status(500).json(err);
+			})
+	} else {
+		res.status(500).json("This user already exists");
+	}
+});
+
+router.post("/returnUser", async (req, res) => {
+	const exists = await User.exists({ username: req.body.username, roomCode: req.body.roomCode, });  
+    if (exists === false) {
+        res.status(500).json("The user was not found");
+    } else {
+        res.status(200).json("Ok");
+    }
 });
 
 router.delete("/:userId", (req, res) => {
