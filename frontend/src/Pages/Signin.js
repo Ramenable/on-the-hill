@@ -147,8 +147,12 @@ const useStyles = makeStyles({
     color: 'white',
     height: 500,
     width: 400,
-    margin: 40,
-    padding: '0 30px'
+    margin: 'auto',
+    marginTop: '5%',
+    padding: '0 30px',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   centeredcard: {
     display: "flex",
@@ -164,9 +168,12 @@ const useStyles = makeStyles({
     marginBottom: -20
   },
   textbox: {
-    padding: 10
+    padding: 10,
+    marginTop: '1%',
+    marginBottom: '1%'
   },
   centered: {
+    width: '100%',
     display: "flex",
     flexDirection: "column",
     justifyContent: "center"
@@ -260,24 +267,24 @@ function Signin() {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Grid container alignContent="center" spacing={3}>
-        <div className={classes.centeredcard}>
-          <Grid item xs={12} className={classes.titlecontent}>
-            <Typography variant="h4" className={classes.title} style={{ marginLeft: "15%" }}>Group Groceries</Typography>
+        <div className={classes.centered}>
+          <Grid item xs={12} className={classes.titlecontent} align="center" style={{marginBottom: 10, marginTop: 10}}>
+            <Typography variant="h4" className={classes.title} >Group Groceries</Typography>
           </Grid>
-          <Grid item xs={12} className={classes.textbox}>
+          <Grid item xs={12} className={classes.textbox} align="center">
             <StyledTextField id="userNameVal" label="Name" variant="outlined" />
           </Grid>
-          <Grid item xs={12} className={classes.textbox}>
+          <Grid item xs={12} className={classes.textbox} align="center">
             <StyledTextField id="roomCodeVal" label="Room Code" variant="outlined" />
           </Grid>
-          <Grid item xs={12} style={{padding: "5%", marginLeft: "9%"}} >
-            <Button variant="outlined" bordercolor="white" onClick={routeChangeCreate}>Create Room</Button>
+          <Grid item xs={12} align="center" >
+            <Button variant="outlined" bordercolor="white" onClick={routeChangeCreate} style={{marginBottom: 10, marginTop: 10}}>Create Room</Button>
           </Grid>
-          <Grid item xs={12} style={{padding: "5%", marginLeft: "15%"}} >
-            <Button variant="outlined" bordercolor="white" onClick={routeChangeJoin}>Join Room</Button>
+          <Grid item xs={12} align="center">
+            <Button variant="outlined" bordercolor="white" onClick={routeChangeJoin} style={{marginBottom: 10, marginTop: 10}}>Join Room</Button>
           </Grid>
-          <Grid item xs={12} style={{padding: "5%", marginLeft: "5%"}} >
-            <Button variant="outlined" bordercolor="white" onClick={routeChangeReturn}>Re-enter Room</Button>
+          <Grid item xs={12} align="center" >
+            <Button variant="outlined" bordercolor="white" onClick={routeChangeReturn} style={{marginBottom: 10, marginTop: 10}}>Re-enter Room</Button>
           </Grid>
         </div>
         </Grid>
