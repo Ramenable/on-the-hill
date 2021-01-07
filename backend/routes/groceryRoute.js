@@ -1,4 +1,5 @@
 const express = require("express");
+const url = require("url");
 const Grocery = require("../groceries");
 const router = express.Router();
 
@@ -21,7 +22,7 @@ router.post("/addGrocery", (req, res) => {
 		requester: req.body.requester,
 	});
 
-	user
+	grocery
 		.save()
 		.then((data) => {
 			res.status(200).json(data);
@@ -29,6 +30,17 @@ router.post("/addGrocery", (req, res) => {
 		.catch((err) => {
 			res.status(500).json(err);
 		})
+});
+
+router.post("/deleteGrocery", (req, res) => {
+	Grocery.deleteOne({ _id: req.body.id }, function (err) {
+  		if (err) {
+  			res.status(500).json(err);
+  		} else {
+  			res.status(200).json("ok");
+  		}
+  		// deleted at most one tank document
+	});
 });
 
 module.exports = router;

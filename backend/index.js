@@ -17,7 +17,7 @@ app.use("/users", user);
 const room = require("./routes/roomRoute");
 app.use("/rooms", room);
 
-const grocery = require("./routes/roomRoute");
+const grocery = require("./routes/groceryRoute");
 app.use("/groceries", grocery);
 
 //localhost:5000/

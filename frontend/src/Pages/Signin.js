@@ -151,13 +151,12 @@ const useStyles = makeStyles({
     padding: '0 30px'
   },
   centeredcard: {
-    marginLeft: 95,
-    marginRight: 95,
-    marginBottom: 20,
-    marginTop: 30
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   title: {
-    fontSize: 43,
+    fontSize: 40,
     fontFamily: 'Raleway',
     color: '#444444'
   },
@@ -166,6 +165,11 @@ const useStyles = makeStyles({
   },
   textbox: {
     padding: 10
+  },
+  centered: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
 });
 
@@ -255,12 +259,10 @@ function Signin() {
     <React.Fragment>
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Grid container spacing={3}>
+        <Grid container alignContent="center" spacing={3}>
         <div className={classes.centeredcard}>
           <Grid item xs={12} className={classes.titlecontent}>
-            <h1 className={classes.title}>
-              Groceries
-            </h1>
+            <Typography variant="h4" className={classes.title} style={{ marginLeft: "15%" }}>Group Groceries</Typography>
           </Grid>
           <Grid item xs={12} className={classes.textbox}>
             <StyledTextField id="userNameVal" label="Name" variant="outlined" />

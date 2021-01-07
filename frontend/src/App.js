@@ -41,8 +41,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-document.body.style = 'linear-gradient(180deg, #213651 30%, #3A5D78 90%)';
-
 
 //----- some routing functions
 
@@ -59,10 +57,9 @@ function App() {
   routeChange();
 
   return (
-
     <Router history={history}>
       <div className={classes.root}>
-        <Container maxWidth="sm">
+        <Container maxWidth="xl">
           <Switch>
             <Route exact path="/" component={Signin} />
             <Route exact path="/roomlobby/:number" component={RoomLobby} />

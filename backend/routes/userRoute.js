@@ -35,7 +35,7 @@ router.post("/makeUser", async (req, res) => {
 });
 
 router.post("/returnUser", async (req, res) => {
-	const exists = await User.exists({ username: req.body.username, roomCode: req.body.roomCode, });  
+	const exists = await User.exists({ username: req.body.username, roomCode: req.body.roomCode });  
     if (exists === false) {
         res.status(500).json("The user was not found");
     } else {
