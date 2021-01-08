@@ -7,13 +7,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -22,12 +17,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import CancelIcon from '@material-ui/icons/Cancel';
-import styled from 'styled-components';
-import { withStyles } from '@material-ui/core/styles';
-import { TextareaAutosize } from '@material-ui/core';
 
-import { BrowserRouter as Redirect, useHistory, useParams, useLocation, History } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { BrowserRouter as Switch, Redirect, useHistory, useLocation, History, Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -63,26 +54,6 @@ async function deleteGrocery(idvalue) {
     console.log(error);
   });
 }
-
-const StyledTextField = styled(TextField)`
-  label.focused {
-    color: #ffffff;
-  }
-  .MuiOutlinedInput-root {
-    fieldset {
-      border-color: #83A3BC;
-    }
-    &:hover fieldset {
-      border-color: #294662;
-    }
-    &.Mui-focused fieldset {
-      border-color: #294662;
-    }
-  }
-  textInputStyle: {
-    color: 'white',
-  }
-`;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -130,10 +101,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-}
-
 function RoomLobby() {
   const history = useHistory();
   const classes = useStyles();
@@ -163,7 +130,7 @@ function RoomLobby() {
     	console.log(error);
   	});
 
-  }, []);
+  }, [location.state.number]);
   useEffect(() => {
   	if(gItems.length && !alert) {
       return;
@@ -180,7 +147,7 @@ function RoomLobby() {
     	console.log(error);
   	});
 
-  }, [alert, gItems]);
+  }, [alert, gItems, location.state.number]);
 
   // Add grocery
   const [open, setOpen] = React.useState(false);

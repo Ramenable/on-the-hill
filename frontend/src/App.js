@@ -1,23 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import styled from 'styled-components';
-import { withStyles } from '@material-ui/core/styles';
-import { TextareaAutosize } from '@material-ui/core';
 
 // import { createBrowserHistory } from "history";
-import { BrowserRouter as Router, Route, Switch, Redirect, useHistory, History, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // routing
 import Signin from "./Pages/Signin";
-import Home from "./Pages/Home";
 import RoomLobby from "./Pages/RoomLobby";
 import { createBrowserHistory } from "history";
 
