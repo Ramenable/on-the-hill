@@ -11,6 +11,9 @@ import styled from 'styled-components';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import Fab from '@material-ui/core/Fab';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { BrowserRouter as Switch, Redirect, useHistory, History, Link } from "react-router-dom";
 
@@ -25,7 +28,7 @@ async function createUserRoom() {
   userValue = document.getElementById('userNameVal').value;
 
   var array = [ document.getElementById('userNameVal').value]
-  const newRoom = await axios.post('http://localhost:5000/rooms/addRoom', {
+  const newRoom = await axios.post('https://grocerynode.herokuapp.com/rooms/addRoom', {
     roomCode: document.getElementById('roomCodeVal').value,
     members: array,
     numMembers: 1,
@@ -44,7 +47,7 @@ async function createUserRoom() {
     return;
   }
 
-  const newUser = await axios.post('http://localhost:5000/users/makeUser', {
+  const newUser = await axios.post('https://grocerynode.herokuapp.com/users/makeUser', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value
   })
@@ -61,7 +64,7 @@ async function updateUserRoom() {
   num = document.getElementById('roomCodeVal').value;
   userValue = document.getElementById('userNameVal').value;
 
-  const newUser = await axios.post('http://localhost:5000/users/makeUser', {
+  const newUser = await axios.post('https://grocerynode.herokuapp.com/users/makeUser', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value
   })
@@ -78,7 +81,7 @@ async function updateUserRoom() {
     return;
   }
 
-  const updatedRoom = await axios.post('http://localhost:5000/rooms/updateRoom', {
+  const updatedRoom = await axios.post('https://grocerynode.herokuapp.com/rooms/updateRoom', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value,
   })
@@ -97,7 +100,7 @@ async function returnUserRoom() {
   num = document.getElementById('roomCodeVal').value;
   userValue = document.getElementById('userNameVal').value;
 
-  const newUser = await axios.post('http://localhost:5000/users/returnUser', {
+  const newUser = await axios.post('https://grocerynode.herokuapp.com/users/returnUser', {
     username: document.getElementById('userNameVal').value,
     roomCode: document.getElementById('roomCodeVal').value
   })
@@ -131,7 +134,7 @@ const StyledTextField = styled(TextField)`
   }
 `;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     //background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     border: 0,
@@ -171,7 +174,12 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center"
   },
-});
+  absolute: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(3),
+  },
+}));
 
 function Signin() {
   const history = useHistory();
@@ -283,6 +291,12 @@ function Signin() {
         </Grid>
       </CardContent>
     </Card>
+
+    <Tooltip title="Made by Abel, Ellie, John,and Nelson" style={{marginRight: '2%', marginBottom: '1%'}}>
+        <Fab className={classes.absolute}>
+          <HelpOutlineIcon color="primary" />
+        </Fab>
+    </Tooltip>
 
     <Snackbar
       anchorOrigin={{

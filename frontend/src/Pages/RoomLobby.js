@@ -28,7 +28,7 @@ var groceryList;
 var user;
 
 async function addGrocery() {
-  const newGrocery = await axios.post('http://localhost:5000/groceries/addGrocery', {
+  const newGrocery = await axios.post('https://grocerynode.herokuapp.com/groceries/addGrocery', {
     name: document.getElementById('name').value,
     roomCode: currentRoom,
     message: document.getElementById('message').value,
@@ -44,7 +44,7 @@ async function addGrocery() {
 
 async function deleteGrocery(idvalue) {
   var idV = idvalue;
-  const oldGrocery = await axios.post('http://localhost:5000/groceries/deleteGrocery', {
+  const oldGrocery = await axios.post('https://grocerynode.herokuapp.com/groceries/deleteGrocery', {
     id: idV,
   })
   .then(function (response) {
@@ -120,7 +120,7 @@ function RoomLobby() {
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/rooms/getRoom' + '?room=' + encodeURIComponent(location.state.number), false)
+    axios.get('https://grocerynode.herokuapp.com/rooms/getRoom' + '?room=' + encodeURIComponent(location.state.number), false)
 	.then((response) => {
 	    console.log(response.data);
 	    memberList = response.data[0].members;
@@ -135,7 +135,7 @@ function RoomLobby() {
   	if(gItems.length && !alert) {
       return;
     }
-  	axios.get('http://localhost:5000/groceries/getGroceries' + '?room=' + encodeURIComponent(location.state.number), false)
+  	axios.get('https://grocerynode.herokuapp.com/groceries/getGroceries' + '?room=' + encodeURIComponent(location.state.number), false)
 	.then((response) => {
 	    groceryList = []
 	    for(var i in response.data) {
